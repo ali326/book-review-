@@ -1,23 +1,20 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {BrowesrRouter} from 'react-router-dom';
-import {Provider} from 'react-redux';
-import {createStore, applyMiddleware} from 'redux';
+import { BrowserRouter } from 'react-router-dom';
+import { Provider } from 'react-redux';
+import { createStore, applyMiddleware } from 'redux';
 import promiseMiddleware from 'redux-promise';
-import reduxThunk from 'redux-thunk';
-import Routes from './routes'
+import ReduxThunk from 'redux-thunk';
 
-import registerServiceWorker from './registerServiceWorker';
+import reducers from './reducers/index'; 
+import Routes from './routes';
 
-
-const createStoreWithMiddlware = applyMiddleware(promiseMiddleware,reduxThunk)(createStore)
-
+const createStoreWithMiddleware = applyMiddleware(promiseMiddleware,ReduxThunk)(createStore)
 
 ReactDOM.render(
-    <Provider store={createStoreWithMiddlware }>
-       <BrowesrRouter>
-           <Routes />
-       </BrowesrRouter>
+    <Provider store={createStoreWithMiddleware(reducers)}>
+        <BrowserRouter>
+            <Routes/>
+        </BrowserRouter>
     </Provider>
-, document.getElementById('root'));
-registerServiceWorker();
+    ,document.getElementById('root'));

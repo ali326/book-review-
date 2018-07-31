@@ -1,36 +1,38 @@
 const mongoose = require('mongoose');
 
-const bookSchema = mongoose .Schema({
-    name: {
-        type: String,
-        required: true
+const bookSchema = mongoose.Schema({
+    name:{
+        type:String,
+        required:true
     },
-    author: {
-        type: String,
-        required: true
+    author:{
+        type:String,
+        required:true
     },
-    review: {
-        type: String,
-        default: 'n/a'
+    review:{
+        type:String,
+        default:'n/a'
     },
-    pages: {
-        type: String,
-        default: 'n/a'
+    pages:{
+        type:String,
+        default:'n/a'
     },
-    rating: {
-        type: Number,
-        min: 1,
-        max: 5
+    rating:{
+        type:Number,
+        required:true,
+        min:1,
+        max:5
     },
-    price: {
-        type: String,
-        defautl: 'n/a'
+    price:{
+        type:String,
+        default:'n/a'
     },
-    ownerId: {
-        type: String,
-        required: true
+    ownerId:{
+        type:String,
+        required:true
     }
-},{timestamps: true})
+},{timestamps:true})
 
-const Book = mongoose.model('Book',bookSchema);
-module.exports = {Book}
+const Book = mongoose.model('Book',bookSchema )
+
+module.exports = { Book }
